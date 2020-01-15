@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    @RenderSection("Header", required: false)
+    <div class="col-md-6 col-sm-4 col-xs-12"></div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="#" class="navbar-logo"><img src="~/Content/logo3.png"></a>
+        <a class="navbar-brand" href="#">Site Adı</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:antiquewhite;">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Default/Index">Anasayfa <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Default/Hakkimizda">Hakkımızda</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="/Default/Iletisim">İletişim</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+          
+			
+</form>
+			<div class="col-md-4">
+				<!-- Blog Search Well -->
+				<div class="well">
+					@Html.Partial("BlogAraPartial")
+					<!-- /.input-group -->
+				</div>
+				</div>
+				@if (Convert.ToInt32(Session["yetkiid"]) == 1)
+				{
+
+					<a href="/Admin/Index/" target="_blank"><i class="fa fa-fw fa-gear"></i>Admin </a>
+
+				}
+
+
+				@if (Session["uyeid"] != null)
+				{
+					<a class="nav-link" href="/Uye/UyeProfil/@Session["uyeid"]">@Session["kullaniciadi"].ToString()</a>
+
+					<a class="nav-link" href="/Uye/Logout/">Çıkış</a>
+
+				}
+				else
+				{
+					<a href="~/Uye/Login/" class="btn btn-secondary  active" role="button" aria-pressed="true" style="margin-left:25px"> Giriş Yap</a>
+					<a href="~/Uye/Create/" class="btn btn-secondary  active" role="button" aria-pressed="true" style="margin-left:10px">Kayıt Ol</a>
+
+
+            }
+
+			</div>
+
+    </nav>
+    <div class="col-md-6 col-sm-4 col-xs-12"></div>
+
+
+
+    @RenderSection("Side", false)
+    @*  *@
+    @RenderBody()
+
+    @RenderSection("Content", false)
+
+
+
+    @RenderSection("Footer", false)
+    <section id="footer">
+        <div class="container">
+            <div class="row text-center text-xs-center text-sm-left text-md-left">
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <h5>Linkler</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="/Default/Index"><i class="fa fa-angle-double-right"></i>Anasayfa</a></li>
+                        <li><a href="/Default/Hakkimizda"><i class="fa fa-angle-double-right"></i>Hakkımızda</a></li>
+                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>SSS</a></li>
+                        <li><a href="~/Uye/Login/"><i class="fa fa-angle-double-right"></i>Giriş Yap</a></li>
+                        <li><a href="~/Uye/Create/"><i class="fa fa-angle-double-right"></i>Kayıt Ol</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+					<a href=/Default/Iletisim>   <h5>İletişim</h5></a> 
+
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <ul class="list-unstyled list-inline social text-center">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/login?lang=tr"><i class="fab fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/?hl=tr"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li class="list-inline-item"><a href="https://github.com/"><i class="fab fa-github"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+
+                    <p class="h6">&copy Tüm hakları Saklıdır | 2019<a class="text-green ml-2" href="" target="_blank"></a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

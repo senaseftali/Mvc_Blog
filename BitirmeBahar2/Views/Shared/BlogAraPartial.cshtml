@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("BlogAra", "Default", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	<div class="input-group">
+			<input id="Ara" name="Ara" type="text" placeholder="Ara" class="form-control">
+			<span class="input-group-btn">
+				<button class="btn my-2 my-sm-0" style="background-color:#007b5e "><i class="fas fa-search" style="color:white"></i></button>
+				<span class="glyphicon glyphicon-search"></span>
+				@*<button class="btn btn-default" value="Ara" type="submit">
+					
+					<span class="glyphicon glyphicon-search"></span>
+				</button>*@
+				
+			</span>
+		</div>
+	@*<form class="form-inline my-2 my-lg-0">
+		<input class="form-control mr-sm-2" type="search" placeholder="Ara" aria-label="Ara">
+	
+	</form>*@
+
+
+}
+
+
+
+

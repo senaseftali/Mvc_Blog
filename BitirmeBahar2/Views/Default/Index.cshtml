@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+
+@model IEnumerable<BitirmeBahar2.Models.Makale>
+@{Layout = "~/Views/Shared/_Layout2.cshtml";}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    
+    <title>Anasayfa</title>
+</head>
+<body>
+    @section Header{
+
+    }
+
+    <div class="container" style="padding-top:35px; padding-bottom:35px;">
+        <div class="row">
+            <!-------------content--------------->
+            <div class="col-md-9 col-sm-12">
+
+
+                <table>
+					<tr>
+						<th class="">  </th>
+						<th class="" style="text-align: left;"> Konular </th>
+						<th class="forum-views"> Paylaşım </th>
+						<th class="forum-views"> Görüntüleme </th>
+						<th class="forum-lastpost"> Son Paylaşım </th>
+					</tr>
+				@foreach (var item in Model)
+				{
+					<tr class="forum-row">
+						<td class="forum-topics-col-icon"> <i class="fas fa-comments"></i> </td>
+						<td class=""> <a href="/Default/MakaleDetay/@item.MakaleId"><p>@item.Baslik</p></a> </td>
+						<td class="forum-views"> 1 </td>
+						<td class="forum-views"> @item.Okunma </td>
+						<td class="forum-lastpost"> <p>Başlık Sahibi:@item.Uye.KullaniciAdi<br><b>@String.Format("{0: dd MMMM yyyy}", item.Tarih)</b></p> </td>
+					</tr> }
+					<tr>
+						<th class="" colspan="5"></th>
+					</tr>
+                </table>
+            </div>
+
+            <!---------------Side------------------->
+
+            <div class="d-none d-sm-block col-sm-3" style="padding-right:35px;">
+				<ul class="list-group">
+					<a href="#" class="list-group-item list-group-item-action" style="background-color:antiquewhite">En Çok Okunanlar</a>
+
+					@{
+						Html.RenderAction("CokOkunan", "Default");
+					}
+				</ul>
+				<ul class="list-group">
+					<a href="#" class="list-group-item list-group-item-action" style="background-color:antiquewhite; margin-top:20px;">En Yeniler</a>
+					@{
+						Html.RenderAction("EnYeniler", "Default");
+					}
+				</ul>
+
+
+
+                
+            </div>
+        </div>
+        </div>
+	
+
+        @section Footer{ }
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

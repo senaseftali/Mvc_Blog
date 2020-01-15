@@ -1,0 +1,462 @@
+﻿@model BitirmeBahar2.Models.Uye
+@{
+    ViewBag.Title = "UyeProfil";
+    Layout = null;
+}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<style>
+
+    body {
+        background-color: white;
+        width: 100%;
+        height: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .cont {
+        margin-bottom:70px;
+        margin-left: 110px;
+        width: 1300px;
+        height: auto;
+        border-radius: 10px;
+        background: rgba(250, 235, 215,0.5);
+        margin-top: 250px;
+        text-align: center;
+    }
+
+    .border {
+        position: absolute;
+        left: 25px;
+        top: -70px;
+        width: 250px;
+    }
+
+    .profile {
+        position: absolute;
+        top: 370px;
+        left: 645px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid rgb(200,200,200);
+        transition: .3s;
+        background-repeat: no-repeat;
+        background-position: -35px 0px;
+        background-size: 280px 200px;
+        margin-top: -180px;
+    }
+
+        .profile:hover {
+            position: absolute;
+            top: 370px;
+            left: 645px;
+            border: 10px solid rgb(150,150,150);
+            transition: .3s;
+        }
+
+    .info {
+        position: absolute;
+        top: 390px;
+        left: 625px;
+        width: 260px;
+        height: 200px;
+        text-align: center;
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+
+        .info h5 {
+            color: #9C9BCB;
+        }
+
+    
+
+    .pin {
+        position: absolute;
+        left: 70px;
+        top: 15px;
+        width: 25px;
+        opacity: .5;
+    }
+
+    .ins {
+        position: absolute;
+        left: 140px;
+        top: 15px;
+        width: 25px;
+        opacity: .5;
+    }
+
+    .twi {
+        position: absolute;
+        left: 210px;
+        top: 15px;
+        width: 25px;
+        opacity: .5;
+    }
+
+    .pin:hover {
+        position: absolute;
+        left: 70px;
+        top: 15px;
+        width: 25px;
+        opacity: 1;
+    }
+
+    .ins:hover {
+        position: absolute;
+        left: 140px;
+        top: 15px;
+        width: 25px;
+        opacity: 1;
+    }
+
+    .twi:hover {
+        position: absolute;
+        left: 210px;
+        top: 15px;
+        width: 25px;
+        opacity: 1;
+    }
+
+
+    .blog-card {
+        transition: height 0.3s ease;
+        -webkit-transition: height 0.3s ease;
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.3);
+        margin: 0 auto 1.6%;
+        overflow: hidden;
+        position: relative;
+        font-size: 14px;
+        line-height: 1.45em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+        .blog-card:hover .details {
+            left: 0;
+        }
+
+        .blog-card .photo {
+            height: 200px;
+            position: relative;
+        }
+
+            .blog-card .photo.photo1 {
+                background-size: cover;
+            }
+
+            .blog-card .photo.photo2 {
+                background-size: cover;
+            }
+
+        .blog-card .details {
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.6);
+            box-sizing: border-box;
+            color: #fff;
+            font-family: "Open Sans";
+            list-style: none;
+            margin: 0;
+            padding: 10px 15px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: -100%;
+        }
+
+            .blog-card .details > li {
+                padding: 25px 0;
+                font-size: 18px;
+            }
+
+            .blog-card .details li:before, .blog-card .details .tags ul:before {
+                font-family: FontAwesome;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+
+            .blog-card .details .tags ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+                .blog-card .details .tags ul:before {
+                    content: "\f02b";
+                }
+
+            .blog-card .details .tags li {
+                display: inline-block;
+                margin-right: 3px;
+            }
+
+            .blog-card .details a {
+                color: inherit;
+            }
+
+                .blog-card .details a:hover {
+                    color: antiquewhite;
+                }
+
+        .blog-card .description {
+            padding: 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+            .blog-card .description h1 {
+                font-family: "Roboto";
+                line-height: 1em;
+                margin: 0 0 10px 0;
+            }
+
+            .blog-card .description h2 {
+                color: #9b9b9b;
+                font-family: "Open Sans";
+                line-height: 1.2em;
+                text-transform: uppercase;
+                font-size: 1em;
+                font-weight: 400;
+                margin: 1.2% 0;
+            }
+
+            .blog-card .description p {
+                position: relative;
+                margin: 0;
+                padding-top: 20px;
+            }
+
+                .blog-card .description p:after {
+                    content: "";
+                    background: #007b5e;
+                    height: 6px;
+                    width: 40px;
+                    position: absolute;
+                    top: 6px;
+                    left: 0;
+                }
+
+            .blog-card .description a {
+                color: #007b5e;
+                margin-bottom: 10px;
+                float: right;
+            }
+
+                .blog-card .description a:after {
+                    transition: all 0.3s ease;
+                    -webkit-transition: all 0.3s ease;
+                    font-family: FontAwesome;
+                    margin-left: -10px;
+                    opacity: 0;
+                    vertical-align: middle;
+                }
+
+                .blog-card .description a:hover:after {
+                    margin-left: 5px;
+                    opacity: 1;
+                }
+
+    .blog-card {
+        height: 200px;
+        max-width: 1000px;
+    }
+
+        .blog-card:hover .photo {
+            -webkit-transform: rotate(5deg) scale(1.3);
+            transform: rotate(5deg) scale(1.3);
+        }
+
+        .blog-card .photo {
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            float: left;
+            height: 100%;
+            width: 40%;
+        }
+
+        .blog-card .details {
+            width: 40%;
+        }
+
+        .blog-card .description {
+            float: left;
+            width: 60%;
+            z-index: 0;
+        }
+
+            .blog-card .description:before {
+                -webkit-transform: skewX(-5deg);
+                transform: skewX(-5deg);
+                content: "";
+                background: #fff;
+                width: 100%;
+                z-index: -1;
+                position: absolute;
+                left: -15px;
+                top: 0;
+                bottom: 0;
+            }
+</style>
+
+<div class="col-md-6 col-sm-4 col-xs-12"></div>
+<nav class="navbar navbar-expand-lg navbar-light">
+	<a href="#" class="navbar-logo"><img src="~/Content/logo3.png"></a>
+	<a class="navbar-brand" href="#">Site Adı</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:antiquewhite;">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="/Default/Index">Anasayfa <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/Default/Hakkimizda">Hakkımızda</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="/Default/Iletisim">İletişim</a>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0"></form>
+		<div class="col-md-4">
+			<!-- Blog Search Well -->
+			<div class="well">
+				@Html.Partial("BlogAraPartial")
+				<!-- /.input-group -->
+			</div>
+		</div>
+		@if (Convert.ToInt32(Session["yetkiid"]) == 1)
+		{
+
+			<a href="/Admin/Index/" target="_blank"><i class="fa fa-fw fa-gear"></i>Admin </a>
+
+		}
+
+
+		@if (Session["uyeid"] != null)
+		{
+			<a class="nav-link" href="/Uye/UyeProfil/@Session["uyeid"]">@Session["kullaniciadi"].ToString()</a>
+
+					<a class="nav-link" href="/Uye/Logout/">Çıkış</a>
+
+		}
+		else
+		{
+			<a href="~/Uye/Login/" class="btn btn-secondary  active" role="button" aria-pressed="true" style="margin-left:25px"> Giriş Yap</a>
+					<a href="~/Uye/Create/" class="btn btn-secondary  active" role="button" aria-pressed="true" style="margin-left:10px">Kayıt Ol</a>
+
+
+            }
+
+	</div>
+
+</nav>
+<div class="col-md-6 col-sm-4 col-xs-12"></div>
+
+
+</nav>
+<div class="col-md-8 col-sm-4 col-xs-12"></div>
+<div class="row">
+    <div class="cont">
+        @*<div  class="profile"><img src="@Model.Foto"  /></div>*@
+		<img src="@Model.Foto" width="75" class="profile"/>
+        <div class="info">
+            <h3> @Html.DisplayFor(model => model.AdiSoyad)</h3>
+            <dt>
+                @Html.DisplayNameFor(model => model.Yetki.Yetki1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Yetki.Yetki1)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                <a href="#"><h5>@Html.DisplayFor(model => model.Email)</h5></a>
+            </dd>
+        </div>
+
+        @foreach (var item in Model.Makales.OrderByDescending(m => m.MakaleId).Take(5))
+        {
+
+            <div class="col-md-12" style="margin-top:250px">
+
+                <div class="blog-card">
+					<img class="photo photo1" width="275" src="@item.Foto"/> <a href="/Uye/UyeProfil/@item.MakaleId"></a>
+                
+                    <ul class="details">
+                        <li class="author"><a href="/Uye/UyeProfil/@item.UyeId"><i class="fa fa-user" aria-hidden="true"></i>@item.Uye.AdiSoyad</a></li>
+                        <li class="date"><i class="fa fa-calendar-alt" aria-hidden="true"></i>@String.Format("{0:dd MMMM yyyy}", item.Tarih)</li>
+                    </ul>
+                    <div class="description">
+                        <h1 style="color:#007b5e">@item.Baslik</h1>
+				
+                        <p class="summary">@item.Icerik.Substring(0,150)</p>
+                        <a href="/Default/MakaleDetay/@item.MakaleId">Daha Fazla<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<a href="/Uye/Edit/@Model.UyeId">Güncelle</a>
+<section id="footer">
+    <div class="container">
+        <div class="row text-center text-xs-center text-sm-left text-md-left">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>Linkler</h5>
+                <ul class="list-unstyled quick-links">
+					<li><a href="/Default/Index"><i class="fa fa-angle-double-right"></i>Anasayfa</a></li>
+					<li><a href="/Default/Hakkimizda"><i class="fa fa-angle-double-right"></i>Hakkımızda</a></li>
+					<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>SSS</a></li>
+					<li><a href="~/Uye/Login/"><i class="fa fa-angle-double-right"></i>Giriş Yap</a></li>
+					<li><a href="~/Uye/Create/"><i class="fa fa-angle-double-right"></i>Kayıt Ol</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>İletişim</h5>
+
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <ul class="list-unstyled list-inline social text-center">
+					<li class="list-inline-item"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+					<li class="list-inline-item"><a href="https://twitter.com/login?lang=tr"><i class="fab fa-twitter"></i></a></li>
+					<li class="list-inline-item"><a href="https://www.instagram.com/?hl=tr"><i class="fab fa-instagram"></i></a></li>
+					<li class="list-inline-item"><a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fab fa-google-plus-g"></i></a></li>
+					<li class="list-inline-item"><a href="https://github.com/"><i class="fab fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+
+                <p class="h6">&copy Tüm hakları Saklıdır | 2019<a class="text-green ml-2" href="" target="_blank"></a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+

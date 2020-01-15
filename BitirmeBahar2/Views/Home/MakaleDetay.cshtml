@@ -1,0 +1,209 @@
+﻿@model BitirmeBahar2.Models.Makale
+
+@{
+    ViewBag.Title = "MakaleDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+	.tag {
+		background-color: beige;
+	}
+
+	.list-inline {
+		list-style: outside none none;
+		margin-left: -5px;
+		padding-left: 0;
+	}
+
+		.list-inline > li {
+			display: inline-block;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+
+	.social {
+		background: url('http://arunendapally.com/themes/CustomTheme/ss.png');
+		width: 32px;
+		height: 32px;
+		display: inline-block;
+		background-repeat: no-repeat;
+	}
+
+	.facebook {
+		background-position: -0px -0px;
+	}
+
+	.linkedin {
+		background-position: -0px -42px;
+	}
+
+	.twitter {
+		background-position: -0px -84px;
+	}
+
+	.googleplus {
+		background-position: -0px -126px;
+	}
+</style>
+
+
+@*<meta property="fb:admins" content="Facebook ID" />*@
+<meta property="og:title" content="@Model.Baslik" />
+<meta property="og:description" content="@Model.Icerik" />
+<meta property="og:url" content="/www.mvc-blog-somee.com/Home/MakaleDetay/@Model.MakaleId" />
+<meta property="og:image" content="~@Model.Foto" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Mvc Blog" />
+
+<div class="col-md-8">
+	<!-- Title -->
+	<h1>@Model.Baslik</h1>
+	<!-- Author -->
+	<p class="lead">
+		<img class="img-circle" width="75" src="@Model.Foto" alt="@Model.Uye.AdiSoyad" /> <a href="/Uye/UyeProfil/@Model.UyeId">@Model.Uye.AdiSoyad</a>
+	</p>
+	<hr>
+	<!-- Date/Time -->
+	<p><span class="glyphicon glyphicon-time"></span>@String.Format("{0:dd MMMM yyyy}", Model.Tarih) <span class="glyphicon glyphicon-edit"></span> @Model.Kategori.KategoriAdi (@Model.Kategori.Makales.Count()) <span class="glyphicon glyphicon-send"></span> @Model.Yorums.Count() </p>
+	<hr>
+	<!-- Preview Image -->
+	<img class="img-responsive" src="@Model.Foto" alt="@Model.Baslik">
+	<hr>
+	<!-- Post Content -->
+	<p class="lead">
+		@Html.Raw(Model.Icerik)
+	</p>
+	<div class="well">
+		@foreach (var item in Model.Etikets)
+		{
+			<span class="bootstrap-tagsinput">@item.EtiketAdi </span>
+		}
+	</div>
+	<hr>
+
+	<div id="fb-root"></div>
+	@*<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.8&appId=880970735339103";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	@{
+		string url = "www.mvc-blog.somee.com/Home/MakaleDetay/" + Model.MakaleId;
+	}
+	<form method="post">
+		<fieldset>
+			<div>
+				<label for="address">Address:</label>
+				<input style="width: 300px" type="text" name="address" value="@Request["address"]" />
+				<input type="submit" value="Map It!" />
+			</div>
+		</fieldset>
+	</form>*@
+	@*@if (IsPost)
+	{
+		@Maps.GetGoogleHtml(Request.Form["address"],
+            width: "800",
+            height: "500")
+	}
+	@{
+		@Maps.GetGoogleHtml("Samsun",
+            width: "800",
+            height: "500")
+	}*@
+	@*<form role="form" method="post">
+		<div class="fb-comments" data-href="https://www.facebook.com/mustafasaglampage/" data-numposts="5"></div>
+
+		<div class="well">
+		@Twitter.Search("aspnetmvc", "twitter")
+
+			@Twitter.Profile("msmustafasaglam", "twitter profilim")
+
+			@Twitter.FollowButton(userName: "msmustafasaglam", largeButton: true)
+			@Twitter.TweetButton(url: "www.mvc-blog.somee.com/Home/MakaleDetay/" + Model.MakaleId, tweetText: Model.Baslik, largeButton: true, hashtag: "etiket")
+			@Facebook.LikeButton("https://www.facebook.com/mustafasaglampage/")
+			@LinkShare.GetHtml("Blog Makale", linkSites: new[] { LinkShareSite.Facebook, LinkShareSite.Twitter })*@
+
+			@*<a class="social facebook" href="https://facebook.com/sharer.php?u=https://mvc-blog.somee.com/Home/MakaleDetay/@Model.MakaleId" target="_blank"></a>*@
+		@*  </div>
+	@*</form>*@
+	@*@if (Session["uyeid"] != null)
+	{
+		<div class="well">
+			<h4>Yorum</h4>
+			<form role="form">
+				<div class="form-group">
+					<textarea id="yorum" typeof="text" class="form-control" rows="3"></textarea>
+				</div>
+				<button type="submit" id="gonder" class="btn btn-primary">Yorum Yap</button>
+			</form>
+		</div>
+	}
+	else
+	{
+		<h2>Makaleye yorum yapmak için kullanıcı girişi yapmalısınız</h2>
+			<p><a href="/Uye/Login/">Giriş Yap</a></p>
+	}*@
+
+	<div class="media">
+		@*@foreach (var item in Model.Yorums.ToList())
+            {
+			<div class="well">
+				<a class="pull-left" href="#">
+					<img width="50" class="img-circle" src="@item.Uye.Foto" alt="@item.Uye.AdiSoyad">
+				</a>
+				<div class="media-body">
+					<h4 class="media-heading">
+						@item.Uye.KullaniciAdi
+						<small>@item.Tarih</small>
+					</h4>
+					@item.Icerik - @if (Convert.ToInt32(Session["uyeid"]) == item.UyeId)
+					{
+						<a class="btn btn-danger" href="/Home/YorumSil/@item.YorumId">Sil</a>
+					}
+				</div>
+			</div>
+            }
+
+	</div>*@
+
+</div>
+<script src="~/Content/js/jquery.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="~/Content/js/bootstrap.min.js"></script>
+
+@*<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("#gonder").click(function () {
+            var yorumunuz = $("#yorum").val();
+            $.ajax({
+                url: '/Home/YorumYap/',
+                data: {yorum:yorumunuz, Makaleid:@Model.MakaleId},
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    alert("Başarılı "+ yorumunuz);}
+                });
+        });
+    })
+
+
+
+</script>*@
+
+@*<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            url: '/Home/OkunmaArttir/',
+            data:{Makaleid: @Model.MakaleId},
+            type: 'POST',
+        });
+    })
+</script>*@
+
+
+
